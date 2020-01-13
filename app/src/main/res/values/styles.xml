@@ -8,4 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <style name="TextNavigationItem" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:padding">@dimen/dp_16</item>
+        <item name="android:color">@color/colorBlack</item>
+        <item name="android:textStyle">italic</item>
+    </style>
 </resources>

@@ -14,5 +14,5 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(){
         mBinding = DataBindingUtil.setContentView(this, getLayoutResoureId())
     }
 
-    abstract fun getLayoutResoureId(): Int;
+    abstract fun getLayoutResoureId(): Int
 }
