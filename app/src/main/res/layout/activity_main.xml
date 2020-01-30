@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.example.moviedb.main.MainActivity" />
+        <import type="com.example.moviedb.ui.main.MainActivity" />
 
         <variable
             name="mainActivity"
-            type="com.example.moviedb.main.MainActivity" />
+            type="com.example.moviedb.ui.main.MainActivity" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
