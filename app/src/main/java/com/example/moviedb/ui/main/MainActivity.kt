@@ -1,6 +1,5 @@
 package com.example.moviedb.ui.main
 
-import android.os.Bundle
 import android.view.View
 import androidx.core.view.GravityCompat.START
 import androidx.lifecycle.Observer
@@ -11,11 +10,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.moviedb.R
 import com.example.moviedb.R.id
 import com.example.moviedb.R.layout
 import com.example.moviedb.ui.base.BaseActivity
 import com.example.moviedb.databinding.ActivityMainBinding
+import com.example.moviedb.ui.adapter.GenreAdapter
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 

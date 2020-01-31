@@ -6,4 +6,5 @@
     <string name="menu_popular">Popular</string>
     <string name="menu_now_playing">Now Playing</string>
     <string name="title_genre">Genre</string>
+    <string name="title_average">Average vote</string>
 </resources>

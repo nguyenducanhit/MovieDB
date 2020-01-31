@@ -2,7 +2,6 @@ package com.example.moviedb.data.repository
 
 import com.example.moviedb.data.service.api.ApiService
 import com.example.moviedb.data.model.Genre
-import com.example.moviedb.data.service.GenreResponse
 import io.reactivex.Single
 
 class GenreRepository(private val service: ApiService) {
@@ -17,5 +16,4 @@ class GenreRepository(private val service: ApiService) {
         fun getInstance(service: ApiService): GenreRepository =
             genreRepository ?: GenreRepository(service).also { genreRepository = it }
     }
-
 }

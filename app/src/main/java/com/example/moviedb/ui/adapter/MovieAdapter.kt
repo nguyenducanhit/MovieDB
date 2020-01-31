@@ -1,13 +1,15 @@
-package com.example.moviedb.ui.base
+package com.example.moviedb.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.example.moviedb.R
 import com.example.moviedb.data.model.Movie
 import com.example.moviedb.databinding.ItemMovieBinding
+import com.example.moviedb.ui.utils.ImageUtils
 
 class MovieAdapter(
     private val movies: List<Movie>
@@ -31,7 +33,11 @@ class MovieAdapter(
 
     class MovieViewHolder(val binding: ItemMovieBinding) : ViewHolder(binding.root) {
         fun bindData(movie: Movie) {
-            binding.textTitle.text = movie.name
+            with(binding){
+                textTitle.text = movie.name
+                Glide.with(root).load(ImageUtils.getLink(movie.backdrop)).into(imagePoster)
+                textVoteAverage.text = movie.voteAverage.toString()
+            }
         }
     }
 }
