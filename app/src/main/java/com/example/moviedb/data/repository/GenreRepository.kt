@@ -1,19 +1,21 @@
 package com.example.moviedb.data.repository
 
-import com.example.moviedb.data.ApiService
+import com.example.moviedb.data.service.api.ApiService
 import com.example.moviedb.data.model.Genre
+import com.example.moviedb.data.service.GenreResponse
 import io.reactivex.Single
 
 class GenreRepository(private val service: ApiService) {
 
-    companion object{
-        lateinit var genreRepository: GenreRepository
+    fun getGenres(): Single<List<Genre>> {
+        return service.getGenres().map { it.genres }
+    }
 
-        fun getInstance(service: ApiService): GenreRepository{
-            return GenreRepository(service)
-        }
+    companion object {
+        var genreRepository: GenreRepository? = null
+
+        fun getInstance(service: ApiService): GenreRepository =
+            genreRepository ?: GenreRepository(service).also { genreRepository = it }
     }
-    fun getGenres(): Single<List<Genre>>{
-        return service.getGenres()
-    }
+
 }

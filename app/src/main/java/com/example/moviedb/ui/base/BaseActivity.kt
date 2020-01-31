@@ -12,12 +12,12 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, getLayoutResoureId())
+        mBinding = DataBindingUtil.setContentView(this, layoutResource)
         setupUI()
         loadData()
     }
 
-    abstract fun getLayoutResoureId(): Int
+    abstract val layoutResource: Int
 
     abstract fun loadData()
 

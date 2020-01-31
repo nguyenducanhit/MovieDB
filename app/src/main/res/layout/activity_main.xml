@@ -30,43 +30,49 @@
             android:layout_height="match_parent"
             android:layout_gravity="start">
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/nav_popular"
-                    style="@style/TextNavigationItem"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{(v) -> mainActivity.navigateTo(navPopular)}"
-                    android:text="@string/menu_popular" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/nav_now_playing"
-                    style="@style/TextNavigationItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{(v) -> mainActivity.navigateTo(navNowPlaying)}"
-                    android:text="@string/menu_now_playing" />
+                    <TextView
+                        android:id="@+id/nav_popular"
+                        style="@style/TextNavigationItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{(v) -> mainActivity.navigateTo(navPopular)}"
+                        android:text="@string/menu_popular" />
 
-                <TextView
-                    android:id="@+id/nav_genre"
-                    style="@style/TextNavigationItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_genre"
-                    android:textSize="@dimen/sp_20"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/nav_now_playing"
+                        style="@style/TextNavigationItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{(v) -> mainActivity.navigateTo(navNowPlaying)}"
+                        android:text="@string/menu_now_playing" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_genres"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_genre" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/nav_genre"
+                        style="@style/TextNavigationItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_genre"
+                        android:textSize="@dimen/sp_20"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_genres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_genre" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

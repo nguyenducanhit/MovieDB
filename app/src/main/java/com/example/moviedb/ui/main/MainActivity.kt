@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.moviedb.R
 import com.example.moviedb.R.id
 import com.example.moviedb.R.layout
 import com.example.moviedb.ui.base.BaseActivity
@@ -25,8 +26,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var viewModel: MainViewModel
 
     private lateinit var genreAdapter: GenreAdapter
-
-    override fun getLayoutResoureId() = layout.activity_main
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
@@ -68,4 +67,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         mBinding.drawerLayout.closeDrawer(START)
     }
+
+    override val layoutResource: Int get() = layout.activity_main
 }
