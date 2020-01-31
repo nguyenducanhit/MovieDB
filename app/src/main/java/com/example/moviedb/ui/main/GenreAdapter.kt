@@ -20,12 +20,12 @@ class GenreAdapter(val genres: List<Genre>) : Adapter<ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        (holder as GenreViewHolder).bindData(genres.get(position))
+        (holder as GenreViewHolder).bindData(genres[position])
     }
 
     class GenreViewHolder(val binding: ItemGenreBinding) : ViewHolder(binding.root){
         fun bindData(genre: Genre){
-            binding.textTitleGenre.setText(genre.name)
+            binding.textTitleGenre.text = genre.name
         }
     }
 }
