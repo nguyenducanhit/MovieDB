@@ -1,4 +1,4 @@
-package com.example.moviedb.base
+package com.example.moviedb.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
