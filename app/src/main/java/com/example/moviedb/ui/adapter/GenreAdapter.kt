@@ -1,4 +1,4 @@
-package com.example.moviedb.ui.main
+package com.example.moviedb.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,7 +23,7 @@ class GenreAdapter(val genres: List<Genre>) : Adapter<ViewHolder>(){
         (holder as GenreViewHolder).bindData(genres[position])
     }
 
-    class GenreViewHolder(val binding: ItemGenreBinding) : ViewHolder(binding.root){
+    class GenreViewHolder(private val binding: ItemGenreBinding) : ViewHolder(binding.root){
         fun bindData(genre: Genre){
             binding.textTitleGenre.text = genre.name
         }
