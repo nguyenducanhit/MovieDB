@@ -7,7 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.genre.GenreFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movies"
             android:layout_width="match_parent"

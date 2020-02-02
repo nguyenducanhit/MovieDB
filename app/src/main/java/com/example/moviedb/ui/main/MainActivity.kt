@@ -1,6 +1,8 @@
 package com.example.moviedb.ui.main
 
 import android.view.View
+import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat.START
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -59,7 +61,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.getGenres()
     }
 
-    fun navigateTo(view: View){
+    fun navigateTo(view: TextView){
         when(view.id){
             id.nav_popular -> navController.navigate(id.nav_popular)
             id.nav_now_playing -> navController.navigate(id.nav_now_playing)

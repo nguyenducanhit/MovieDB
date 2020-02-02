@@ -6,5 +6,21 @@
     <string name="menu_popular">Popular</string>
     <string name="menu_now_playing">Now Playing</string>
     <string name="title_genre">Genre</string>
-    <string name="title_average">Average vote</string>
+    <string name="title_average">Average vote:</string>
+    <string name="menu_up_coming">Up coming</string>
+    <string name="menu_toprate">Toprate</string>
+
+    <string-array name="key_genre">
+        <item>popular</item>
+        <item>now_playing</item>
+        <item>upcoming</item>
+        <item>toprate</item>
+    </string-array>
+
+    <string-array name="title_genre">
+        <item>Popular</item>
+        <item>Now Playing</item>
+        <item>Up coming</item>
+        <item>Toprate</item>
+    </string-array>
 </resources>

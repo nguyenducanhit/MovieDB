@@ -56,6 +56,22 @@
                         android:text="@string/menu_now_playing" />
 
                     <TextView
+                        android:id="@+id/nav_up_coming"
+                        style="@style/TextNavigationItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{(v) -> mainActivity.navigateTo(navUpComing)}"
+                        android:text="@string/menu_up_coming" />
+
+                    <TextView
+                        android:id="@+id/nav_toprate"
+                        style="@style/TextNavigationItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{(v) -> mainActivity.navigateTo(navToprate)}"
+                        android:text="@string/menu_toprate" />
+
+                    <TextView
                         android:id="@+id/nav_genre"
                         style="@style/TextNavigationItem"
                         android:layout_width="match_parent"
