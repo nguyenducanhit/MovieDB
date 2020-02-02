@@ -31,7 +31,7 @@ class MovieAdapter(
         (holder as MovieViewHolder).bindData(movies[position])
     }
 
-    class MovieViewHolder(val binding: ItemMovieBinding) : ViewHolder(binding.root) {
+    class MovieViewHolder(private val binding: ItemMovieBinding) : ViewHolder(binding.root) {
         fun bindData(movie: Movie) {
             with(binding){
                 textTitle.text = movie.name

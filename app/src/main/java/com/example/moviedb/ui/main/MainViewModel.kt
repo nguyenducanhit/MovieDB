@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 
 class MainViewModel : BaseViewModel() {
     val mutableLiveData = MutableLiveData<List<Genre>>()
-    private val repository by lazy { GenreRepository.getInstance(RetrofitInstance.getInstance()!!.create(ApiService::class.java)) }
+    private val repository by lazy { GenreRepository.getInstance(RetrofitInstance.getInstance().create(ApiService::class.java)) }
     private val compositeDisposable = CompositeDisposable()
     fun getGenres() {
         val disposables = repository.getGenres()
