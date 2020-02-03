@@ -11,9 +11,8 @@ import com.example.moviedb.data.model.Movie
 import com.example.moviedb.databinding.ItemMovieBinding
 import com.example.moviedb.ui.utils.ImageUtils
 
-class MovieAdapter(
-    private val movies: List<Movie>
-) : Adapter<ViewHolder>() {
+class MovieAdapter : Adapter<ViewHolder>() {
+    private val movies: MutableList<Movie> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = DataBindingUtil.inflate<ItemMovieBinding>(
@@ -31,11 +30,24 @@ class MovieAdapter(
         (holder as MovieViewHolder).bindData(movies[position])
     }
 
+    fun addMovies(data: List<Movie>) {
+        val lastItem = movies.size
+        movies.addAll(data)
+        notifyItemInserted(lastItem)
+    }
+
+    fun setMovies(data: List<Movie>) {
+        movies.clear()
+        movies.addAll(data)
+        notifyDataSetChanged()
+    }
+
     class MovieViewHolder(private val binding: ItemMovieBinding) : ViewHolder(binding.root) {
         fun bindData(movie: Movie) {
-            with(binding){
+            with(binding) {
                 textTitle.text = movie.name
-                Glide.with(root).load(ImageUtils.getLink(movie.backdrop)).into(imagePoster)
+                Glide.with(root).load(ImageUtils.getLink(movie.backdrop))
+                    .placeholder(R.drawable.ic_launcher_background).into(imagePoster)
                 textVoteAverage.text = movie.voteAverage.toString()
             }
         }
