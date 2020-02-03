@@ -6,6 +6,7 @@ import com.example.moviedb.data.service.MoviesResponse
 import com.example.moviedb.data.service.api.ApiService
 import com.example.moviedb.data.service.api.RetrofitInstance
 import com.example.moviedb.ui.base.BaseViewModel
+import com.example.moviedb.ui.genre.GenreViewModel.TypeLoad.LOAD_MORE
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -14,23 +15,35 @@ class GenreViewModel : BaseViewModel() {
     private val movieRepository =
         MovieRepository.getInstance(RetrofitInstance.getInstance().create(ApiService::class.java))
 
+    var isExhaust = false
+
+    var currentPage: Int = 1
+
     private val compositeDisposable = CompositeDisposable()
 
-    val mutableLiveData = MutableLiveData<MoviesResponse>()
+    private val mutableLiveData = MutableLiveData<MoviesResponse>()
 
-    fun getMovies(key: String) {
-        val disposable = movieRepository.getMovieByType(key, FIRST_PAGE)
+    fun getMovies(key: String, page: Int, typeLoad: Int) {
+        currentPage = if (typeLoad == LOAD_MORE) page + 1 else page
+
+        val disposable = movieRepository.getMovieByType(key, currentPage)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 mutableLiveData.postValue(it)
+                isExhaust = it.page == it.totalPage
+                currentPage = it.page
             }, {
                 errorLiveData.postValue(it.message)
             })
         compositeDisposable.add(disposable)
     }
 
-    companion object {
-        private const val FIRST_PAGE: Int = 1
+    val moviesLiveData: MutableLiveData<MoviesResponse>
+        get() = mutableLiveData
+
+    object TypeLoad {
+        const val LOAD_MORE = 1
+        const val LOAD_NEW = 0
     }
 }
