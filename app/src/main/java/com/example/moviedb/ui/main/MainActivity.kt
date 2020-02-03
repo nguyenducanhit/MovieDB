@@ -17,8 +17,12 @@ import com.example.moviedb.R.layout
 import com.example.moviedb.ui.base.BaseActivity
 import com.example.moviedb.databinding.ActivityMainBinding
 import com.example.moviedb.ui.adapter.GenreAdapter
+import com.example.moviedb.ui.dialog.LoadingDialog
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    override val layoutResource: Int get() = layout.activity_main
+
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -37,10 +41,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         mBinding.mainActivity = this
         navController = findNavController(id.container)
         setSupportActionBar(mBinding.appBar.toolbar)
-        appBarConfiguration = AppBarConfiguration(setOf(
-            id.nav_popular,
-            id.nav_now_playing
-        ), mBinding.drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                id.nav_popular,
+                id.nav_now_playing
+            ), mBinding.drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         mBinding.navView.setupWithNavController(navController)
         viewModel.loadingLiveData.observe(this, Observer {
@@ -61,13 +67,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.getGenres()
     }
 
-    fun navigateTo(view: TextView){
-        when(view.id){
+    fun navigateTo(view: TextView) {
+        when (view.id) {
             id.nav_popular -> navController.navigate(id.nav_popular)
             id.nav_now_playing -> navController.navigate(id.nav_now_playing)
         }
         mBinding.drawerLayout.closeDrawer(START)
     }
-
-    override val layoutResource: Int get() = layout.activity_main
 }

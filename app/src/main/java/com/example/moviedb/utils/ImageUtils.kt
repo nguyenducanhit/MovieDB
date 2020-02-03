@@ -1,4 +1,4 @@
-package com.example.moviedb.ui.utils
+package com.example.moviedb.utils
 
 object ImageUtils {
 

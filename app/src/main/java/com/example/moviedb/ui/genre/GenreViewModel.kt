@@ -9,6 +9,7 @@ import com.example.moviedb.ui.base.BaseViewModel
 import com.example.moviedb.ui.genre.GenreViewModel.TypeLoad.LOAD_MORE
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 class GenreViewModel : BaseViewModel() {
@@ -27,8 +28,15 @@ class GenreViewModel : BaseViewModel() {
         currentPage = if (typeLoad == LOAD_MORE) page + 1 else page
 
         val disposable = movieRepository.getMovieByType(key, currentPage)
+            .doOnSubscribe {
+                loadingLiveData.postValue(true)
+            }
+
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnTerminate {
+                loadingLiveData.postValue(false)
+            }
             .subscribe({
                 mutableLiveData.postValue(it)
                 isExhaust = it.page == it.totalPage
