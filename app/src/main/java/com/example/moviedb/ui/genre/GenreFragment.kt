@@ -1,6 +1,7 @@
 package com.example.moviedb.ui.genre
 
 
+import android.app.Activity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -37,7 +38,7 @@ class GenreFragment : BaseFragment<FragmentGenreBinding>(),
         })
 
         genreViewModel.loadingLiveData.observe(this, Observer {
-            if (it == true) showLoadingDialog() else hideLoadingDialog()
+            if (it == true) activity?.showLoadingDialog() else hideLoadingDialog()
         })
 
         mBinding.recyclerMovies.layoutManager = GridLayoutManager(activity, NUMBER_COLUMN)
