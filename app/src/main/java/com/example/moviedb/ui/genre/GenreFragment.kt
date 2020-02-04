@@ -13,7 +13,7 @@ import com.example.moviedb.ui.base.BaseFragment
 import com.example.moviedb.ui.base.EndlessRecyclerOnScrollListener
 import com.example.moviedb.ui.genre.GenreViewModel.TypeLoad.LOAD_MORE
 import com.example.moviedb.ui.genre.GenreViewModel.TypeLoad.LOAD_NEW
-import com.example.moviedb.ui.utils.Constant
+import com.example.moviedb.utils.Constant
 
 /**
  * A simple [Fragment] subclass.
@@ -34,6 +34,10 @@ class GenreFragment : BaseFragment<FragmentGenreBinding>(),
 
         genreViewModel.errorLiveData.observe(this, Observer {
             toast(it)
+        })
+
+        genreViewModel.loadingLiveData.observe(this, Observer {
+            if (it == true) showLoadingDialog() else hideLoadingDialog()
         })
 
         mBinding.recyclerMovies.layoutManager = GridLayoutManager(activity, NUMBER_COLUMN)

@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.moviedb.R
 import com.example.moviedb.data.model.Movie
 import com.example.moviedb.databinding.ItemMovieBinding
-import com.example.moviedb.ui.utils.ImageUtils
+import com.example.moviedb.utils.ImageUtils
 
 class MovieAdapter : Adapter<ViewHolder>() {
     private val movies: MutableList<Movie> = mutableListOf()
