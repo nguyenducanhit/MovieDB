@@ -11,7 +11,9 @@ import com.example.moviedb.data.model.Movie
 import com.example.moviedb.databinding.ItemMovieBinding
 import com.example.moviedb.utils.ImageUtils
 
-class MovieAdapter : Adapter<ViewHolder>() {
+class MovieAdapter(
+    private val onItemClickListener: (Movie) -> Unit
+) : Adapter<ViewHolder>() {
     private val movies: MutableList<Movie> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,6 +30,7 @@ class MovieAdapter : Adapter<ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         (holder as MovieViewHolder).bindData(movies[position])
+        holder.itemView.setOnClickListener { onItemClickListener.invoke(movies[position]) }
     }
 
     fun addMovies(data: List<Movie>) {

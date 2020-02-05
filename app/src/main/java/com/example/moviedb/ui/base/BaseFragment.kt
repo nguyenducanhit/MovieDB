@@ -13,7 +13,7 @@ import com.example.moviedb.ui.dialog.LoadingDialog
 
 abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
-    lateinit var mBinding: T
+    lateinit var binding: T
 
     private var loadingDialog: LoadingDialog? = null
 
@@ -23,7 +23,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             LayoutInflater.from(activity),
             layoutResourceId,
             container,
@@ -34,7 +34,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         }
         setupView()
         loadData()
-        return mBinding.root
+        return binding.root
     }
 
     abstract val layoutResourceId: Int

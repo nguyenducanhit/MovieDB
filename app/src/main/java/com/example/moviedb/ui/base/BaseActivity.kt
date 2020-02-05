@@ -8,11 +8,11 @@ import androidx.databinding.ViewDataBinding
 
 abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(){
 
-    lateinit var mBinding: T
+    lateinit var binding: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, layoutResource)
+        binding = DataBindingUtil.setContentView(this, layoutResource)
         setupUI()
         loadData()
     }
