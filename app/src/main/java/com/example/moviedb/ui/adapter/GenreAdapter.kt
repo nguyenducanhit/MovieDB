@@ -9,7 +9,7 @@ import com.example.moviedb.R
 import com.example.moviedb.data.model.Genre
 import com.example.moviedb.databinding.ItemGenreBinding
 
-class GenreAdapter(val genres: List<Genre>) : Adapter<ViewHolder>(){
+class GenreAdapter(private val genres: List<Genre>) : Adapter<ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = DataBindingUtil.inflate<ItemGenreBinding>(LayoutInflater.from(parent.context), R.layout.item_genre, parent, false)
         return GenreViewHolder(binding)

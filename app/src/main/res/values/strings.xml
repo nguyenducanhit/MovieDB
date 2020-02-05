@@ -9,6 +9,10 @@
     <string name="title_average">Average vote:</string>
     <string name="menu_up_coming">Up coming</string>
     <string name="menu_toprate">Toprate</string>
+    <string name="title_name">Name:</string>
+    <string name="title_manufacturer">Manufacturer:</string>
+    <string name="title_overview">Overview: %s</string>
+    <string name="title_release_date">Release date</string>
 
     <string-array name="key_genre">
         <item>popular</item>

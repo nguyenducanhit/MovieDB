@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 open class EndlessRecyclerOnScrollListener(
     var isExhaust: Boolean,
-    val gridLayoutManager: GridLayoutManager,
-    val onLoadMore: OnLoadMore
+    private val gridLayoutManager: GridLayoutManager,
+    private val onLoadMore: OnLoadMore
 ) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

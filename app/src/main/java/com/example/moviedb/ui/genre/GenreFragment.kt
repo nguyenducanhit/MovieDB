@@ -1,7 +1,5 @@
 package com.example.moviedb.ui.genre
 
-
-import android.app.Activity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,6 +12,7 @@ import com.example.moviedb.ui.base.BaseFragment
 import com.example.moviedb.ui.base.EndlessRecyclerOnScrollListener
 import com.example.moviedb.ui.genre.GenreViewModel.TypeLoad.LOAD_MORE
 import com.example.moviedb.ui.genre.GenreViewModel.TypeLoad.LOAD_NEW
+import com.example.moviedb.ui.moviedetail.MovieDetailActivity
 import com.example.moviedb.utils.Constant
 
 /**
@@ -25,13 +24,22 @@ class GenreFragment : BaseFragment<FragmentGenreBinding>(),
 
     private lateinit var keyGenre: String
 
-    private val movieAdapter = MovieAdapter()
+    private lateinit var movieAdapter: MovieAdapter
 
     override val layoutResourceId: Int
         get() = R.layout.fragment_genre
 
     override fun setupView() {
         genreViewModel = ViewModelProviders.of(this).get(GenreViewModel::class.java)
+
+        movieAdapter = MovieAdapter { movie ->
+            activity?.let {
+                MovieDetailActivity.start(
+                    it,
+                    movie.id
+                )
+            }
+        }
 
         genreViewModel.errorLiveData.observe(this, Observer {
             toast(it)
@@ -41,17 +49,17 @@ class GenreFragment : BaseFragment<FragmentGenreBinding>(),
             if (it == true) activity?.showLoadingDialog() else hideLoadingDialog()
         })
 
-        mBinding.recyclerMovies.layoutManager = GridLayoutManager(activity, NUMBER_COLUMN)
+        binding.recyclerMovies.layoutManager = GridLayoutManager(activity, NUMBER_COLUMN)
 
         val endlessRecyclerOnScrollListener = EndlessRecyclerOnScrollListener(
             genreViewModel.isExhaust,
-            mBinding.recyclerMovies.layoutManager as GridLayoutManager,
+            binding.recyclerMovies.layoutManager as GridLayoutManager,
             this
         )
 
-        mBinding.recyclerMovies.adapter = movieAdapter
+        binding.recyclerMovies.adapter = movieAdapter
 
-        mBinding.recyclerMovies.setOnScrollListener(endlessRecyclerOnScrollListener)
+        binding.recyclerMovies.setOnScrollListener(endlessRecyclerOnScrollListener)
 
         genreViewModel.moviesLiveData.observe(this, Observer {
             if (it.page == FIRST_PAGE) {

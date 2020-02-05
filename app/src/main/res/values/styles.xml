@@ -33,4 +33,8 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="RatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="colorAccent">#000</item>
+    </style>
 </resources>

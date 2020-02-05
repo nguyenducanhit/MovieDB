@@ -1,8 +1,6 @@
 package com.example.moviedb.ui.main
 
-import android.view.View
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat.START
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,7 +15,6 @@ import com.example.moviedb.R.layout
 import com.example.moviedb.ui.base.BaseActivity
 import com.example.moviedb.databinding.ActivityMainBinding
 import com.example.moviedb.ui.adapter.GenreAdapter
-import com.example.moviedb.ui.dialog.LoadingDialog
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -38,17 +35,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun setupUI() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        mBinding.mainActivity = this
+        binding.mainActivity = this
         navController = findNavController(id.container)
-        setSupportActionBar(mBinding.appBar.toolbar)
+        setSupportActionBar(binding.appBar.toolbar)
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 id.nav_popular,
                 id.nav_now_playing
-            ), mBinding.drawerLayout
+            ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        mBinding.navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
         viewModel.loadingLiveData.observe(this, Observer {
 
         })
@@ -59,7 +56,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         viewModel.mutableLiveData.observe(this, Observer {
             genreAdapter = GenreAdapter(it)
-            mBinding.recyclerGenres.adapter = genreAdapter
+            binding.recyclerGenres.adapter = genreAdapter
         })
     }
 
@@ -72,6 +69,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             id.nav_popular -> navController.navigate(id.nav_popular)
             id.nav_now_playing -> navController.navigate(id.nav_now_playing)
         }
-        mBinding.drawerLayout.closeDrawer(START)
+        binding.drawerLayout.closeDrawer(START)
     }
 }
