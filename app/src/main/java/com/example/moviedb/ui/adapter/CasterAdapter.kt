@@ -8,7 +8,7 @@ import com.example.moviedb.R
 import com.example.moviedb.data.model.Caster
 import com.example.moviedb.databinding.ItemCasterBinding
 
-class CasterAdapter(private val casters: MutableList<Caster>?) :
+class CasterAdapter(private val casters: MutableList<Caster>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

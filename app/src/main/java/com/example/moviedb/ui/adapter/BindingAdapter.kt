@@ -39,7 +39,7 @@ object BindingAdapter {
     @BindingAdapter("showCasters")
     @JvmStatic
     fun showCasters(recyclerView: RecyclerView?, casters: MutableList<Caster>?) {
-        val casterAdapter = CasterAdapter(casters)
+        val casterAdapter = CasterAdapter(casters?: emptyList<Caster>().toMutableList())
         recyclerView?.adapter = casterAdapter
     }
 
