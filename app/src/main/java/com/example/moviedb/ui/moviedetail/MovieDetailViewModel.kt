@@ -1,8 +1,8 @@
 package com.example.moviedb.ui.moviedetail
 
 import androidx.lifecycle.MutableLiveData
-import com.example.moviedb.data.model.Movie
 import com.example.moviedb.data.repository.MovieRepository
+import com.example.moviedb.data.service.MovieDetailResponse
 import com.example.moviedb.data.service.api.ApiService
 import com.example.moviedb.data.service.api.RetrofitInstance
 import com.example.moviedb.ui.base.BaseViewModel
@@ -16,11 +16,17 @@ class MovieDetailViewModel : BaseViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    val movieLiveData = MutableLiveData<Movie>()
+    val movieLiveData = MutableLiveData<MovieDetailResponse>()
 
     fun getMovie(id: Int) {
         val disposable = movieRepository.getMovie(id)
             .subscribeOn(Schedulers.io())
+            .doOnSubscribe {
+                loadingLiveData.postValue(true)
+            }
+            .doOnTerminate {
+                loadingLiveData.postValue(false)
+            }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 movieLiveData.postValue(it)

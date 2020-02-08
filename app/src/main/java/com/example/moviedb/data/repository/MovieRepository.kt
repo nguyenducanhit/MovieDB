@@ -1,7 +1,7 @@
 package com.example.moviedb.data.repository
 
-import com.example.moviedb.data.model.Movie
 import com.example.moviedb.data.service.ListMovieResponse
+import com.example.moviedb.data.service.MovieDetailResponse
 import com.example.moviedb.data.service.api.ApiService
 import io.reactivex.Single
 
@@ -17,7 +17,7 @@ class MovieRepository(
         return service.getMoviesByType(type, page)
     }
 
-    fun getMovie(movieId: Int): Single<Movie> {
+    fun getMovie(movieId: Int): Single<MovieDetailResponse> {
         return service.getMovie(movieId)
     }
 

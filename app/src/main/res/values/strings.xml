@@ -11,9 +11,12 @@
     <string name="menu_toprate">Toprate</string>
     <string name="title_name">Name:</string>
     <string name="title_manufacturer">Manufacturer:</string>
-    <string name="title_overview">Overview: %s</string>
+    <string name="title_overview">Overview</string>
     <string name="title_release_date">Release date</string>
-
+    <string name="colon">:</string>
+    <string name="text_title_caster">Caster</string>
+    <string name="text_underline"><u>%s</u></string>
+    <string name="title_trailer">Trailer</string>
     <string-array name="key_genre">
         <item>popular</item>
         <item>now_playing</item>
