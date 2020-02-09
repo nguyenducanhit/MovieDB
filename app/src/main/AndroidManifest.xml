@@ -13,10 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.videoview.TrailerActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.moviedetail.MovieDetailActivity"
-            android:theme="@style/NoActionBar" />
-
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"

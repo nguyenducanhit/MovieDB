@@ -2,6 +2,7 @@ package com.example.moviedb.data.repository
 
 import com.example.moviedb.data.service.ListMovieResponse
 import com.example.moviedb.data.service.MovieDetailResponse
+import com.example.moviedb.data.service.TrailerResponse
 import com.example.moviedb.data.service.api.ApiService
 import io.reactivex.Single
 
@@ -20,6 +21,8 @@ class MovieRepository(
     fun getMovie(movieId: Int): Single<MovieDetailResponse> {
         return service.getMovie(movieId)
     }
+
+    fun getTrailer(movieId: Int): Single<TrailerResponse> = service.getTrailers(movieId)
 
     companion object {
         private var movieRepository: MovieRepository? = null

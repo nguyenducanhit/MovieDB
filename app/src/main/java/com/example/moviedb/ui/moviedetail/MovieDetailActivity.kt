@@ -10,6 +10,7 @@ import com.example.moviedb.data.model.Movie
 import com.example.moviedb.data.service.MovieDetailResponse
 import com.example.moviedb.databinding.ActivityMovieDetailBinding
 import com.example.moviedb.ui.base.BaseActivity
+import com.example.moviedb.ui.videoview.TrailerActivity
 
 class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding>() {
 
@@ -44,6 +45,14 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding>() {
                 hideLoadingDialog()
             }
         })
+
+        binding.buttonTrailer.setOnClickListener({
+            trailer(binding.movie?.trailer)
+        })
+    }
+
+    fun trailer(url: String?) {
+        TrailerActivity.start(this, url)
     }
 
     companion object {
